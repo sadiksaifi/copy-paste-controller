@@ -46,10 +46,25 @@ If you've ever been frustrated by websites that block copy-paste, this extension
    - background.js
    - styles.css
    - icons/
-   
+
+## Changelog
+
+### Version 1.0.0 (December 16, 2024)
+- Initial release
+- Core functionality: Enable/disable copy and paste on any webpage
+- Persistent settings across browser sessions
+- Clean, modern user interface
+- Support for all websites
+
+### Future Roadmap
+- [ ] Add custom website-specific settings
+- [ ] Implement keyboard shortcuts
+- [ ] Create more granular copy/paste controls
+- [ ] Add localization support
+
 ## License
 
-[Your chosen license]
+This project is licensed under [GNU GPL v3](LICENSE).
 
 ## Support
 

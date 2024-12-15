@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "Easily enable or disable copy and paste functionality on any webpage. Perfect for content protection and security-conscious browsing.",
   "author": "Sadik Saifi",
+  "license": "GPL-3.0-or-later",
   "permissions": ["scripting", "activeTab", "storage"],
   "host_permissions": ["<all_urls>"],
   "background": {

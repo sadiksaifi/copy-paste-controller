@@ -26,4 +26,4 @@ If you have questions about this privacy policy, please contact Sadik Saifi via:
 - Website: https://www.sadiksaifi.dev
 - Email: email@sadiksaifi.dev
 
-Last updated: March 2024 
+Last updated: December 16, 2024

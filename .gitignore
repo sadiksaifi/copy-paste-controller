@@ -134,9 +134,6 @@ dist/
 build/
 *.zip
 
-# Store assets
-store-assets/
-
 # Local development
 .DS_Store
 Thumbs.db

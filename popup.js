@@ -1,16 +1,16 @@
-let isPastingEnabled = false;
+let isCopyPasteEnabled = false;
 
 const toggleButton = document.getElementById("toggleButton");
 
 // Load the initial state when popup opens
-chrome.storage.sync.get(['isPastingEnabled'], async (result) => {
-  isPastingEnabled = result.isPastingEnabled ?? true; // Default to true (pasting enabled)
+chrome.storage.sync.get(['isCopyPasteEnabled'], async (result) => {
+  isCopyPasteEnabled = result.isCopyPasteEnabled ?? true; // Default to true
   updateButtonState();
 });
 
 function updateButtonState() {
-  toggleButton.textContent = isPastingEnabled ? "Disable Pasting" : "Enable Pasting";
-  toggleButton.className = isPastingEnabled ? "disabled" : "enabled";
+  toggleButton.textContent = isCopyPasteEnabled ? "Disable Copy/Paste" : "Enable Copy/Paste";
+  toggleButton.className = isCopyPasteEnabled ? "disabled" : "enabled";
 }
 
 toggleButton.addEventListener("click", async () => {
@@ -18,32 +18,52 @@ toggleButton.addEventListener("click", async () => {
 
   if (!tab || !tab.id) return;
 
-  if (!isPastingEnabled) {
-    // Enable pasting by adding our override listener
+  if (!isCopyPasteEnabled) {
+    // Enable copy/paste
     await chrome.scripting.executeScript({
       target: { tabId: tab.id },
       func: () => {
-        // Add a listener that prevents the default paste blocking
-        window.enablePastingListener = (event) => {
+        // First, remove any existing blocking listeners
+        if (window.blockCopyPasteListener) {
+          document.removeEventListener('copy', window.blockCopyPasteListener, true);
+          document.removeEventListener('paste', window.blockCopyPasteListener, true);
+        }
+        
+        // Add enabling listeners
+        window.enableCopyPasteListener = (event) => {
           event.stopImmediatePropagation();
           return true;
         };
-        document.addEventListener('paste', window.enablePastingListener, true);
+        
+        document.addEventListener('paste', window.enableCopyPasteListener, true);
+        document.addEventListener('copy', window.enableCopyPasteListener, true);
       }
     });
   } else {
-    // Disable pasting by removing our override listener
+    // Disable copy/paste
     await chrome.scripting.executeScript({
       target: { tabId: tab.id },
       func: () => {
-        document.removeEventListener('paste', window.enablePastingListener, true);
-        delete window.enablePastingListener;
+        // Remove enabling listeners if they exist
+        if (window.enableCopyPasteListener) {
+          document.removeEventListener('copy', window.enableCopyPasteListener, true);
+          document.removeEventListener('paste', window.enableCopyPasteListener, true);
+        }
+        
+        // Add blocking listeners
+        window.blockCopyPasteListener = (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          return false;
+        };
+        
+        document.addEventListener('copy', window.blockCopyPasteListener, true);
+        document.addEventListener('paste', window.blockCopyPasteListener, true);
       }
     });
   }
 
-  isPastingEnabled = !isPastingEnabled;
-  // Save the state
-  chrome.storage.sync.set({ isPastingEnabled });
+  isCopyPasteEnabled = !isCopyPasteEnabled;
+  chrome.storage.sync.set({ isCopyPasteEnabled });
   updateButtonState();
 });

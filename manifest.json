@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Toggle Pasting",
+  "name": "Toggle Copy/Paste",
   "version": "1.0",
-  "description": "Enable or disable pasting on the current page.",
+  "description": "Control copy and paste functionality for the web pages.",
   "permissions": ["scripting", "activeTab", "storage"],
   "host_permissions": ["<all_urls>"],
   "background": {

@@ -18,10 +18,10 @@ If you've ever been frustrated by websites that block copy-paste, this extension
 ## Screenshots
 
 ### Enabled State
-![Copy/Paste Enabled](store-assets/screenshots/screenshot-1.png)
+![Copy/Paste Enabled](chrome/store-assets/screenshots/screenshot-1.png)
 
 ### Disabled State
-![Copy/Paste Disabled](store-assets/screenshots/screenshot-2.png)
+![Copy/Paste Disabled](chrome/store-assets/screenshots/screenshot-2.png)
 
 ## Installation
 
@@ -31,13 +31,22 @@ If you've ever been frustrated by websites that block copy-paste, this extension
 
 ## Development
 
+### Chrome Extensions
+
 1. Clone this repository
 2. Open Chrome and go to `chrome://extensions`
 3. Enable Developer Mode
-4. Click "Load unpacked" and select the extension directory
+4. Click "Load unpacked" and select the extension `directory/chrome`
+
+### Safari Extensions
+
+1. Clone this repository
+2. Open Safari and go to `Safari > Extensions`
+3. Click "Load Unpacked" and select the extension `directory/safari`
 
 ## Building for Production
 
+### Chrome
 1. Update version in `manifest.json`
 2. Zip the following files:
    - manifest.json
@@ -46,6 +55,9 @@ If you've ever been frustrated by websites that block copy-paste, this extension
    - background.js
    - styles.css
    - icons/
+
+### Safari
+> Comming soon
 
 ## Changelog
 
@@ -57,11 +69,11 @@ If you've ever been frustrated by websites that block copy-paste, this extension
 - Support for all websites
 
 ### Future Roadmap
+- [X] Add Safari support(partially)
 - [ ] Add custom website-specific settings
 - [ ] Implement keyboard shortcuts
 - [ ] Create more granular copy/paste controls
 - [ ] Add localization support
-- [ ] Add Safari support
 
 ## License
 

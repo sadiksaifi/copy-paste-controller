@@ -1,22 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Toggle Copy/Paste</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy & Paste Controller</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
     <div class="container">
       <div class="header">
-        <img src="icons/icon48.png" alt="Extension icon" />
-        <h1>Copy/Paste Control</h1>
+        <img src="icons/icon48.png" alt="Copy & Paste Controller icon" />
+        <h1>Copy & Paste Controller</h1>
       </div>
-      <div class="status">
-        Control copy and paste functionality for the web pages.
+      <div class="status" role="status" aria-live="polite">
+        Control copy and paste functionality for the current webpage.
       </div>
-      <button id="toggleButton">Enable Copy/Paste</button>
+      <button id="toggleButton" aria-label="Toggle copy and paste functionality">
+        Enable Copy/Paste
+      </button>
       <div class="footer">
-        Click the button to toggle copy/paste functionality.
+        <p>Click the button to toggle copy/paste functionality.</p>
+        <div>
+          <span class="version">Version 1.0.0</span>
+          <a href="https://www.sadiksaifi.dev/#contact" target="_blank" rel="noopener noreferrer" class="help-link">Help</a>
+        </div>
       </div>
     </div>
     <script src="popup.js"></script>

@@ -128,3 +128,15 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Build output
+dist/
+build/
+*.zip
+
+# Store assets
+store-assets/
+
+# Local development
+.DS_Store
+Thumbs.db
